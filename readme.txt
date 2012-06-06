@@ -18,11 +18,13 @@ Personally I like to make things easy. Especially things that are boring. So wit
 
 That being said, this is currently a work in progress. It's a work in progress that I'm using on client sites, but its still not perfect. I'll be adding more to make it so as the days/weeks/months/years/worlds go on.
 
-Current Capabilities:
+**Current Capabilities:**
+
 * Shortcodes
 * Editor popup panel (to make it easier for clients)
 
-Planned Updates
+**Planned Updates**
+
 * Caching to improve speed of the plugin (Facebook's Graph API can be slow).
 * Added easy through Facebook user integration. This would allow users to connect their Facebook accounts, and find pages that they currently manage, and the galleries associated with them.
 * Options panels to allow for the editing of the presentation and usability of the plugin.
