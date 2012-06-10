@@ -4,7 +4,7 @@ Plugin Name: Facebook Vinyl
 Plugin URI: http://rjksn.me/
 Description: A plugin that will allow you to display a facebook gallery in your WordPress.
 Author: Ryan Jackson
-Version: 0.1.0
+Version: 0.1.1
 Author URI: http://rjksn.me/
 */
 
@@ -98,7 +98,8 @@ class FB_Gallery {
                     <div style="padding:15px 15px 0 15px;">
                         <h3 style="color:#5A5A5A!important; font-family:Georgia,Times New Roman,Times,serif!important; font-size:1.8em!important; font-weight:normal!important;">Pick a Gallery</h3>
                         <span>
-                            Select a Facebook gallery below to add it to your post or page.
+                            Enter your page's username, or ID in the box below.<br/>
+                            For example: http://facebook.com/rjksn -> rjksn
                         </span>
                     </div>
                     <div style="padding:15px 15px 0 15px;">
@@ -108,6 +109,7 @@ class FB_Gallery {
 
                     <div style="padding:15px 15px 0 15px;">
                         <div id="dropdownwrap">
+                        	<span>Select the desired photo album here.</span>
 							<select id="add_gallery_id">
                             	<option value="">Enter the page above, to get the galleries</option>
                         	</select>
@@ -118,7 +120,6 @@ class FB_Gallery {
                     <div style="padding:15px 15px 0 15px;">
                         <input type="checkbox" id="display_title" checked='checked' /> <label for="display_title">Display gallery title</label> &nbsp;&nbsp;&nbsp;
                         <input type="checkbox" id="display_description" checked='checked' /> <label for="display_description">Display form description</label>&nbsp;&nbsp;&nbsp;
-                        <input type="checkbox" id="gform_ajax" /> <label for="gform_ajax">Enable AJAX</label>
                     </div>
                     <div style="padding:15px;">
                         <input type="button" class="button-primary" value="Insert Form" onclick="InsertGallery();"/>&nbsp;&nbsp;&nbsp;

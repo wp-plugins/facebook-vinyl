@@ -43,13 +43,23 @@ Yes
 
 = Really? =
 
-Yeah, I didn't like the other ones. Is this one perfect? No. But I've tried to keep the markup clean so that others can skin it, and use it for themselves. Well, not really; I've kept it clean and made it so that I can use it on multiple different sites and match it to the themes we've created for clients. Is it ideal? Not yet. 
+Yeah, I didn't like the other ones. Is this one perfect? No. But I've tried to keep the markup clean so that others can skin it, and use it for themselves. Well, not really; I've kept it clean and made it so that I can use it on multiple different sites and match it to the themes we've created for clients. Is it ideal? Not yet.
+
+= Shortcodes =
+
+[fbgallery id=161300770550609 title={nothing | h3 | h2 | h1 | span} desc={nothing | h3 | h2 | h1 | span} ]
+
+[fbgallery id=161300770550609] (for default titles or descriptions)
+[fbgallery id=161300770550609 title= desc=] (for no titles or descriptions)
 
 == Screenshots ==
 
 1. Look a editor window popup.
 
 == Changelog ==
+
+= 0.1.1 =
+* Removed "Enable Ajax" checkbox… which did nothing.
 
 = 0.1.0 =
 * It's new. This is it so far.
