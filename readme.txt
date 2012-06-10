@@ -1,6 +1,5 @@
 === Plugin Name ===
 Contributors: rjksn
-Donate link: http://example.com/
 Tags: facebook, gallery, graph
 Requires at least: 3.3.2
 Tested up to: 3.3.2
