@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: rjksn
-Tags: facebook, gallery, graph
+Tags: Facebook, gallery, graph, Facebook album, Facebook gallery, Facebook photos, Facebook images
 Requires at least: 3.3.2
 Tested up to: 3.3.2
 Stable tag: trunk
