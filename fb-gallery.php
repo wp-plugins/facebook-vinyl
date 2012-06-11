@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Facebook Vinyl
-Plugin URI: http://wordpress.org/extend/plugins/facebook-vinyl/
+Plugin URI: http://rjksn.me/
 Description: A plugin that will allow you to display a facebook gallery in your WordPress.
 Author: Ryan Jackson
-Version: 0.1.1
+Version: 0.1.2
 Author URI: http://rjksn.me/
 */
 
@@ -163,23 +163,27 @@ class FB_Gallery {
 
 		$album_details = json_decode( $album_details_raw ); 
 		$photo_details = json_decode( $photo_details_raw ); 
-
+		
 		// Process the data
 		$output_images = '';
 
 		if ( !is_int( $limit ) ) $limit = '';
 		$limit_count = 0;
 
-		foreach( $photo_details->data as $image_package ) {
-			$output_images .= '
-				<div class="fbg_image_thumbnail">
-					<a class="fbg_image_link" href="' . $image_package->images[0]->source . '" target="_blank" title="' . $image_package->name . '">
-						<img src="' . $image_package->images[5]->source . '" width="' . $image_package->images[5]->width . '" height="' . $image_package->images[5]->height . '" />
-					</a>
-					<a class="fbg_fb_image_link" href="' . $image_package->link . '" title="Facebook: ' . $image_package->name . '">View on Facebook</a>
-				</div>';
+		if ( isset( $photo_detais ) && is_array ( $photo_details ) 
+			foreach( $photo_details->data as $image_package ) {
+				$output_images .= '
+					<div class="fbg_image_thumbnail">
+						<a class="fbg_image_link" href="' . $image_package->images[0]->source . '" target="_blank" title="' . $image_package->name . '">
+							<img src="' . $image_package->images[5]->source . '" width="' . $image_package->images[5]->width . '" height="' . $image_package->images[5]->height . '" />
+						</a>
+						<a class="fbg_fb_image_link" href="' . $image_package->link . '" title="Facebook: ' . $image_package->name . '">View on Facebook</a>
+					</div>';
+			}
+		} else {
+			$output_images = '<!-- There was a problem getting the images in the album. Are there images in it? -->';
 		}
-
+		
 		$output_gallery = '<div class="fbg_wrapper' . ( !empty( $class ) ? ' ' . $class : '' ) . '">
 			<div class="fbg_description">' . 
 				( !empty( $title ) ? '<' . $title . '>' . $album_details->name        . '</' . $title . '>' : '' ) .
