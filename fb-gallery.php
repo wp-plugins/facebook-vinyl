@@ -17,11 +17,13 @@ class FB_Gallery {
 		
 	    // Add shortcode
 		add_shortcode( 'fbgallery', array( $this, 'rjksn_fb_gallery_shortcode') );
+		add_shortcode( 'fbvinyl', array( $this, 'rjksn_fb_gallery_shortcode') );
 
 	    // Adding "embed form" button
         add_action('media_buttons_context', array( $this, 'add_form_button'));
 
 		add_action('admin_footer',  array( $this, 'add_mce_popup'));
+
 	}
 	
 	
@@ -170,7 +172,7 @@ class FB_Gallery {
 		if ( !is_int( $limit ) ) $limit = '';
 		$limit_count = 0;
 
-		if ( isset( $photo_detais ) && is_array ( $photo_details ) 
+		if ( isset( $photo_detais ) && is_array ( $photo_details ) {
 			foreach( $photo_details->data as $image_package ) {
 				$output_images .= '
 					<div class="fbg_image_thumbnail">
