@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Facebook Vinyl
-Plugin URI: http://rjksn.me/
+Plugin URI: http://wordpress.org/extend/plugins/facebook-vinyl/
 Description: A plugin that will allow you to display a facebook gallery in your WordPress.
 Author: Ryan Jackson
 Version: 0.1.4
