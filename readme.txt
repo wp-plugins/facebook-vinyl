@@ -21,10 +21,9 @@ That being said, this is currently a work in progress. It's a work in progress t
 
 * Shortcodes
 * Editor popup panel (to make it easier for clients)
+* Album caching to improve speed
 
 **Planned Updates**
-
-* Caching to improve speed of the plugin (Facebook's Graph API can be slow).
 * Added easy through Facebook user integration. This would allow users to connect their Facebook accounts, and find pages that they currently manage, and the galleries associated with them.
 * Options panels to allow for the editing of the presentation and usability of the plugin.
 
@@ -46,16 +45,29 @@ Yeah, I didn't like the other ones. Is this one perfect? No. But I've tried to k
 
 = Shortcodes =
 
-[fbgallery id=161300770550609 title={nothing | h3 | h2 | h1 | span} desc={nothing | h3 | h2 | h1 | span} ]
+[fbvinyl id=161300770550609 title={nothing | h3 | h2 | h1 | span} desc={nothing | h3 | h2 | h1 | span} ]
 
-[fbgallery id=161300770550609] (for default titles or descriptions)
-[fbgallery id=161300770550609 title= desc=] (for no titles or descriptions)
+[fbvinyl id=161300770550609] (for default titles or descriptions)
+
+[fbvinyl id=161300770550609 title= desc=] (for no titles or descriptions)
 
 == Screenshots ==
 
 1. Look a editor window popup.
 
 == Changelog ==
+
+= 0.2.0 =
+* Fixing the huge error, and adding caching to the app.
+
+= 0.1.4 =
+* Adding 1 HUGE error
+
+= 0.1.3 =
+* Bug fixes
+
+= 0.1.2 =
+* Bug fixes
 
 = 0.1.1 =
 * Removed "Enable Ajax" checkbox… which did nothing.
@@ -65,6 +77,8 @@ Yeah, I didn't like the other ones. Is this one perfect? No. But I've tried to k
 
 == Upgrade Notice ==
 
+= 0.2.0 =
+* Well I broke the 0.1.# line completely. So this is a working version with caching. On one of the pages I'm using this on there's a HUGE increase in load time.
+
 = 0.1.0 =
 * Well. Otherwise you won't have it installed. 
-
