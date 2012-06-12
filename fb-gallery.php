@@ -4,7 +4,7 @@ Plugin Name: Facebook Vinyl
 Plugin URI: http://rjksn.me/
 Description: A plugin that will allow you to display a facebook gallery in your WordPress.
 Author: Ryan Jackson
-Version: 0.1.3
+Version: 0.1.4
 Author URI: http://rjksn.me/
 */
 
@@ -172,7 +172,7 @@ class FB_Gallery {
 		if ( !is_int( $limit ) ) $limit = '';
 		$limit_count = 0;
 
-		if ( isset( $photo_detais ) && is_array ( $photo_details ) {
+		if ( isset( $photo_detais ) && is_array ( $photo_details ) ) {
 			foreach( $photo_details->data as $image_package ) {
 				$output_images .= '
 					<div class="fbg_image_thumbnail">
