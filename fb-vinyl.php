@@ -4,7 +4,7 @@ Plugin Name: Facebook Vinyl
 Plugin URI: http://wordpress.org/extend/plugins/facebook-vinyl/
 Description: A plugin that will allow you to display a Facebook gallery in your WordPress.
 Author: Ryan Jackson
-Version: 0.2.0
+Version: 0.2.1
 Author URI: http://rjksn.me/
 */
 
@@ -91,11 +91,15 @@ class FB_Vinyl {
 				shortcode = '[fbvinyl id=' + form_id;
 				
 				if( !jQuery("#display_title").is(":checked") ) { 
-					shortcode += ' title=';
+					shortcode += ' title=""';
 				}
 
 				if( !jQuery("#display_description").is(":checked") ) { 
-					shortcode += ' desc=';
+					shortcode += ' desc=""';
+				}
+
+				if( '25' != jQuery("#display_limit").val() ) { 
+					shortcode += ' limit="' + jQuery("#display_limit").val() + '"';
 				}
 				
                 window.send_to_editor( shortcode + ']');
@@ -124,12 +128,16 @@ class FB_Vinyl {
                             	<option value="">Enter the page above, to get the galleries</option>
                         	</select>
 						</div>
- <br/>
+					<br/>
                         <div style="padding:8px 0 0 0; font-size:11px; font-style:italic; color:#5A5A5A">Can't find your gallery? Make sure it is active.</div>
                     </div>
                     <div style="padding:15px 15px 0 15px;">
                         <input type="checkbox" id="display_title" checked='checked' /> <label for="display_title">Display gallery title</label> &nbsp;&nbsp;&nbsp;
                         <input type="checkbox" id="display_description" checked='checked' /> <label for="display_description">Display form description</label>&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div style="padding:15px 15px 0 15px;">
+                        <input type="text" name="display_limit" id="display_limit" value="25" /><br/>
+                        <div style="padding:8px 0 0 0; font-size:11px; font-style:italic; color:#5A5A5A">Limit the number of results (Facebook&rsquo; s default is 25.</div>
                     </div>
                     <div style="padding:15px;">
                         <input type="button" class="button-primary" value="Insert Form" onclick="InsertGallery();"/>&nbsp;&nbsp;&nbsp;
@@ -149,17 +157,18 @@ class FB_Vinyl {
 			'title'  => 'h3',
 			'desc'   => 'p',
 			'link'   => true,
-			'limit'  => ''
+			'limit'  => '25'
 
 		), $atts ) );
 
 		if ( !is_numeric( $id ) ) return '';
+		if ( !is_numeric( $limit ) ) $limit = 25;
 
 		// Clear variables.
 		$output_gallery = ''; $output_images = '';
 
 		$album_details = $this->get_album_data( $id ); 
-		$photo_details = $this->get_photo_data( $id ); 
+		$photo_details = $this->get_photo_data( $id, $limit ); 
 		
 		// Process the data
 		$output_images = '';
@@ -171,7 +180,7 @@ class FB_Vinyl {
 			foreach( $photo_details->data as $image_package ) {
 				$output_images .= '
 					<div class="fbg_image_thumbnail">
-						<a class="fbg_image_link" rel="nofollow" href="' . $image_package->images[0]->source . '" target="_blank" title="' . $image_package->name . '">
+						<a class="fbg_image_link" rel="gallery-' . $id . ' nofollow" href="' . $image_package->images[0]->source . '" target="_blank" title="' . $image_package->name . '">
 							<img src="' . $image_package->images[5]->source . '" width="' . $image_package->images[5]->width . '" height="' . $image_package->images[5]->height . '" />
 						</a>
 						<a class="fbg_fb_image_link" rel="nofollow" href="' . $image_package->link . '" title="Facebook: ' . $image_package->name . '">View on Facebook</a>
@@ -198,8 +207,8 @@ class FB_Vinyl {
 		return $this->load_data( 'https://graph.facebook.com/' . esc_attr( $id ), 'a-' );
 	}
 
-	private function get_photo_data( $id ) { 
-		return $this->load_data( 'https://graph.facebook.com/' . esc_attr( $id ) . '/photos', 'p-' );
+	private function get_photo_data( $id, $limit = 25 ) { 
+		return $this->load_data( 'https://graph.facebook.com/' . esc_attr( $id ) . '/photos/?limit=' . (string)$limit, 'p-' );
 	}
 
 	private function load_data( $url, $pre = NULL ) {
@@ -234,7 +243,8 @@ class FB_Vinyl {
 		echo "
 		<style type='text/css'>
 		.fbg_wrapper:after, .fbg_image_wrapper:after { clear: both; display: block; content: ' '; height: 0; overflow: hidden; visibility: hidden; }
-
+		.fbg_wrapper { padding-bottom: 1em; }
+		
 		.fbg_image_thumbnail { border: 1px solid #ccc; padding: 5px; position: relative; float: left; line-height: 0; margin-right: 10px; margin-top: 10px; }
 		.fbg_image_thumbnail:hover { border: 1px solid #aaa; }
 		
