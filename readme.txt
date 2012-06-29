@@ -2,7 +2,7 @@
 Contributors: rjksn
 Tags: Facebook, gallery, graph, Facebook album, Facebook gallery, Facebook photos, Facebook images
 Requires at least: 3.3.2
-Tested up to: 3.3.2
+Tested up to: 3.4.1
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -24,6 +24,7 @@ That being said, this is currently a work in progress. It's a work in progress t
 * Album caching to improve speed
 
 **Planned Updates**
+
 * Added easy through Facebook user integration. This would allow users to connect their Facebook accounts, and find pages that they currently manage, and the galleries associated with them.
 * Options panels to allow for the editing of the presentation and usability of the plugin.
 
@@ -45,7 +46,7 @@ Yeah, I didn't like the other ones. Is this one perfect? No. But I've tried to k
 
 = Shortcodes =
 
-[fbvinyl id=161300770550609 title={nothing | h3 | h2 | h1 | span} desc={nothing | h3 | h2 | h1 | span} ]
+[fbvinyl id=161300770550609 title={nothing | h3 | h2 | h1 | span} desc={nothing | h3 | h2 | h1 | span} limit={numerical}]
 
 [fbvinyl id=161300770550609] (for default titles or descriptions)
 
@@ -56,6 +57,9 @@ Yeah, I didn't like the other ones. Is this one perfect? No. But I've tried to k
 1. Look a editor window popup.
 
 == Changelog ==
+
+= 0.2.1 =
+* Added a limit option for users who were trying to add larger galleries.
 
 = 0.2.0 =
 * Fixing the huge error, and adding caching to the app.
