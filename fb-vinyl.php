@@ -4,7 +4,7 @@ Plugin Name: Facebook Vinyl
 Plugin URI: http://wordpress.org/extend/plugins/facebook-vinyl/
 Description: A plugin that will allow you to display a Facebook gallery in your WordPress.
 Author: Ryan Jackson
-Version: 0.2.2
+Version: 0.2.3
 Author URI: http://rjksn.me/
 */
 
@@ -180,7 +180,7 @@ class FB_Vinyl {
 			foreach( $photo_details->data as $image_package ) {
 				$output_images .= '
 					<div class="fbg_image_thumbnail">
-						<a class="fbg_image_link" rel="gallery-' . $id . '" nofollow" href="' . $image_package->images[0]->source . '" target="_blank" title="' . $image_package->name . '">
+						<a class="fbg_image_link" rel="gallery-' . $id . '" href="' . $image_package->images[0]->source . '" target="_blank" title="' . $image_package->name . '">
 							<img src="' . $image_package->images[5]->source . '" width="' . $image_package->images[5]->width . '" height="' . $image_package->images[5]->height . '" />
 						</a>
 						<a class="fbg_fb_image_link" rel="nofollow" href="' . $image_package->link . '" title="Facebook: ' . $image_package->name . '">View on Facebook</a>

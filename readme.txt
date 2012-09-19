@@ -58,8 +58,8 @@ Yeah, I didn't like the other ones. Is this one perfect? No. But I've tried to k
 
 == Changelog ==
 
-= 0.2.2 =
-* Fixed "reel" issue.
+= 0.2.3 =
+* Fixed "rel" issue.
 * Fixed Typos
 
 = 0.2.1 =
