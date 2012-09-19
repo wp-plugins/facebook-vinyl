@@ -2,7 +2,7 @@
 Contributors: rjksn
 Tags: Facebook, gallery, graph, Facebook album, Facebook gallery, Facebook photos, Facebook images
 Requires at least: 3.3.2
-Tested up to: 3.4.1
+Tested up to: 3.4.2
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -57,6 +57,10 @@ Yeah, I didn't like the other ones. Is this one perfect? No. But I've tried to k
 1. Look a editor window popup.
 
 == Changelog ==
+
+= 0.2.2 =
+* Fixed "reel" issue.
+* Fixed Typos
 
 = 0.2.1 =
 * Added a limit option for users who were trying to add larger galleries.

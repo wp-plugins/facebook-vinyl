@@ -4,7 +4,7 @@ Plugin Name: Facebook Vinyl
 Plugin URI: http://wordpress.org/extend/plugins/facebook-vinyl/
 Description: A plugin that will allow you to display a Facebook gallery in your WordPress.
 Author: Ryan Jackson
-Version: 0.2.1
+Version: 0.2.2
 Author URI: http://rjksn.me/
 */
 
@@ -112,8 +112,8 @@ class FB_Vinyl {
                     <div style="padding:15px 15px 0 15px;">
                         <h3 style="color:#5A5A5A!important; font-family:Georgia,Times New Roman,Times,serif!important; font-size:1.8em!important; font-weight:normal!important;">Pick a Gallery</h3>
                         <span>
-                            Enter your page's username, or ID in the box below.<br/>
-                            For example: http://facebook.com/rjksn -> rjksn
+                            Enter your page&rsquo;s username, or ID in the box below.<br/>
+                            For example: http://facebook.com/flypaperagency -> flypaperagency
                         </span>
                     </div>
                     <div style="padding:15px 15px 0 15px;">
@@ -137,7 +137,7 @@ class FB_Vinyl {
                     </div>
                     <div style="padding:15px 15px 0 15px;">
                         <input type="text" name="display_limit" id="display_limit" value="25" /><br/>
-                        <div style="padding:8px 0 0 0; font-size:11px; font-style:italic; color:#5A5A5A">Limit the number of results (Facebook&rsquo; s default is 25.</div>
+                        <div style="padding:8px 0 0 0; font-size:11px; font-style:italic; color:#5A5A5A">Limit the number of results (Facebook&rsquo; s default is 25).</div>
                     </div>
                     <div style="padding:15px;">
                         <input type="button" class="button-primary" value="Insert Form" onclick="InsertGallery();"/>&nbsp;&nbsp;&nbsp;
@@ -180,7 +180,7 @@ class FB_Vinyl {
 			foreach( $photo_details->data as $image_package ) {
 				$output_images .= '
 					<div class="fbg_image_thumbnail">
-						<a class="fbg_image_link" rel="gallery-' . $id . ' nofollow" href="' . $image_package->images[0]->source . '" target="_blank" title="' . $image_package->name . '">
+						<a class="fbg_image_link" rel="gallery-' . $id . '" nofollow" href="' . $image_package->images[0]->source . '" target="_blank" title="' . $image_package->name . '">
 							<img src="' . $image_package->images[5]->source . '" width="' . $image_package->images[5]->width . '" height="' . $image_package->images[5]->height . '" />
 						</a>
 						<a class="fbg_fb_image_link" rel="nofollow" href="' . $image_package->link . '" title="Facebook: ' . $image_package->name . '">View on Facebook</a>
