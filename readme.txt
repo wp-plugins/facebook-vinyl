@@ -58,6 +58,12 @@ Yeah, I didn't like the other ones. Is this one perfect? No. But I've tried to k
 
 == Changelog ==
 
+= 1.0.1 =
+* Please don't let this break everything.
+* Added some options.
+* Migrated to WP_HTTP as opposed to cURL.
+* Placed some error checking on the basic requirements for the plugin to work.
+
 = 1.0.0 =
 * Please don't let this break everything.
 * Added some options.

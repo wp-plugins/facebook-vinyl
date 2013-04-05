@@ -4,7 +4,7 @@ Plugin Name: Facebook Vinyl
 Plugin URI: http://wordpress.org/extend/plugins/facebook-vinyl/
 Description: A plugin that will allow you to display a Facebook gallery in your WordPress.
 Author: Ryan Jackson
-Version: 1.0
+Version: 1.0.1
 Author URI: http://rjksn.me/
 */
 
@@ -368,7 +368,7 @@ class FB_Vinyl {
 				//print_r($image_package);
 				
 				
-				$name   = $this->clean( $image_package->from->name );
+				$name   = $this->clean( $image_package->name );
 				$full   = $image_package->images[0];
 				$thumb  = $image_package->images[ $iloop ];
 				$link   = $image_package->link;
@@ -633,7 +633,6 @@ class FB_Vinyl {
 		if ( !isset( $input['gallery_limit'] ) || !is_int( $input['gallery_limit'] ) )
 			$input['gallery_limit'] = 25;
 
-		
 		return $input;
 	}
 
