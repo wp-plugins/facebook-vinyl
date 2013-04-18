@@ -4,7 +4,7 @@ Plugin Name: Facebook Vinyl
 Plugin URI: http://wordpress.org/extend/plugins/facebook-vinyl/
 Description: A plugin that will allow you to display a Facebook gallery in your WordPress.
 Author: Ryan Jackson
-Version: 1.0.1
+Version: 1.0.2
 Author URI: http://rjksn.me/
 */
 
@@ -15,6 +15,7 @@ class FB_Vinyl {
 	private $cacheext;
 	private $functional;
 	private $options;
+	private $error; 
 	
 	function __construct() {
 
@@ -345,14 +346,20 @@ class FB_Vinyl {
 			'limit'  => '25'
 		), $atts ) );
 
+		$this->error = null;
+
+
 		if ( !is_numeric( $id ) ) return '';
 		if ( !is_numeric( $limit ) ) $limit = 25;
 
 		// Clear variables.
 		$output_gallery = $output_images = '';
 
-		$album_details = $this->get_album_data( $id ); 
-		$photo_details = $this->get_photo_data( $id, $limit ); 
+		if ( $album_details = $this->get_album_data( $id ) ) { 
+			$photo_details = $this->get_photo_data( $id, $limit ); 
+		} else { 
+			return isset( $this->error ) ? '<!-- fb vinyl error ' . $this->error . ' -->':'';
+		}
 		
 
 		// Process the data
@@ -365,15 +372,13 @@ class FB_Vinyl {
 				$iloop = count( $image_package->images ) - 1; 
 				while ( $image_package->images[ $iloop ]->width < 180 ) $iloop--; 
 				
-				//print_r($image_package);
 				
-				
-				$name   = $this->clean( $image_package->name );
+				$name = isset( $image_package->name ) ? $this->clean( $image_package->name ) : 
+					isset( $image_package->from->name ) ? $this->clean( $image_package->from->name ) : '';
+
 				$full   = $image_package->images[0];
 				$thumb  = $image_package->images[ $iloop ];
 				$link   = $image_package->link;
-				
-				
 				
 				$output_images .= '
 					<div class="fbg_image_thumbnail">
@@ -383,16 +388,15 @@ class FB_Vinyl {
 						<a class="fbg_fb_image_link" rel="nofollow" href="' . $link . '" title="Facebook: ' . $name . '">' . __('View on Facebook', 'fbvinyl') . '</a>
 					</div>';
 			}
-		} else {
-			$output_images = '<!-- There was a problem getting the images in the album. Are there images in it? -->';
-		}
+		} 
 
 
 		/* Album Details 
 		 * 
 		 *
 		 */
-
+		
+		// var_dump( $album_details  );
 		$output_gallery = '<div class="fbg_wrapper' . ( !empty( $class ) ? ' ' . $class : '' ) . '">
 			<div class="fbg_description">' . 
 				( !empty( $title ) ? '<' . $title . '>' . $this->clean( $album_details->name )		. '</' . $title . '>' : '' ) .
@@ -402,6 +406,10 @@ class FB_Vinyl {
 
 				( !empty( $link ) ? '<a href="' . $album_details->link . '" title="Facebook: ' . $album_details->name .  '" class="fbg_fb_link" target="_blank">' . __('View on Facebook', 'fbvinyl' ) . '</a>': '' ) . '
 			</div>';
+
+		if ( isset( $this->error ) ) 
+			$output_gallery .= sprintf( '<!-- There was a problem getting the images in the album. Error: %s -->', ( isset( $this->error ) ? $this->error : 'an error on an error' ) );
+		
 
 		return $output_gallery;
 	}
@@ -451,13 +459,17 @@ class FB_Vinyl {
 		$response = wp_remote_get( $url );
 
 		// Check to make sure there was not an error
-		if( is_wp_error( $response ) )
+		if( is_wp_error( $response ) ) { 
 			return false;
+			$this->error = $response->get_error_message();
+		}
 		
 		// If the response returned is valid use that data
  		if( '200' == $response['response']['code'] ) {
 			$fp = @fopen($cachefile, 'w'); @fwrite( $fp, $response['body'] ); @fclose( $fp );
-		} 
+		} else {
+			$this->error = 'url: ' . $url . ' response: ' . $response['body'];
+		}
 
 		// Since there was an error, make sure there was a cache file
 		if ( ! $this->cached($cachefile) ) {
@@ -541,6 +553,9 @@ class FB_Vinyl {
 						<td colspan="2">
 							<p>
 								<?php _e('This plugin integrates Facebook albums into WordPress with an easy to use editor popup. To make it a little more useful we‘re adding default options to make things easier. Please review the options below and change any of the settings to make the plugin better for you.', 'fbvinyl'); ?>
+							</p>
+							<p>
+								Dear general public and adoring fans, this never got finished. So, don't get your hopes up. Have a wonderful day though. 
 							</p>
 						</td>
 					</tr>

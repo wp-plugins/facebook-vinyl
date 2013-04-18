@@ -58,11 +58,13 @@ Yeah, I didn't like the other ones. Is this one perfect? No. But I've tried to k
 
 == Changelog ==
 
+= 1.0.2 =
+* Fixed the fact that the last update broke it for others. 
+* Added some rudimentary troubleshooting details into the plugin. They will show up as comments. <!-- fb vinyl error url: [[URL]] response: [[JSON]] -->
+* Unsupported get requests in the error code above is FB's way of saying, you: A) don't have permission. B) that doesn't exist. 
+
 = 1.0.1 =
-* Please don't let this break everything.
-* Added some options.
-* Migrated to WP_HTTP as opposed to cURL.
-* Placed some error checking on the basic requirements for the plugin to work.
+* Fixed the name element for one user.
 
 = 1.0.0 =
 * Please don't let this break everything.
