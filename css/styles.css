@@ -1,0 +1,32 @@
+
+.fbg_wrapper:after, .fbg_image_wrapper:after { clear: both; display: block; content: ' '; height: 0; overflow: hidden; visibility: hidden; }
+.fbg_wrapper { padding-bottom: 1em; }
+
+.fbg_image_thumbnail { border: 1px solid #ccc; padding: 5px; position: relative; float: left; line-height: 0; margin-right: 10px; margin-top: 10px; }
+.fbg_image_thumbnail:hover { border: 1px solid #aaa; }
+
+.fbg_image_thumbnail .fbg_image_link { display: block;  width: 180px; height: 135px; overflow: hidden; }
+
+.fbg_image_thumbnail .fbg_fb_image_link { display: none; }
+.fbg_image_thumbnail:hover .fbg_fb_image_link { 
+	z-index: 99; 
+	display: block; 
+	width: 100%; 
+	height: 12px; 
+	text-indent: 40px; 
+	background-color: #3B5998;
+	background-color: rgba(0,0,0,.5);
+	background-image: url(../images/fb-link-tab.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	position: absolute; 
+	left: 0; 
+	bottom: 12px; 
+	font-size: 11px; 
+	font-family: "lucinda grande", sans-serif; 
+	color: #fff !important;
+	line-height: 0;
+	padding-top: 12px;
+}
+
+.fbg_wrapper .fbg_fb_link { font-size: 11px; font-family: "lucinda grande", sans-serif; align: right; color: #3B5998; }
