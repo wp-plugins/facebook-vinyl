@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Facebook Vinyl
-Plugin URI: http://wordpress.org/extend/plugins/facebook-vinyl/
+Plugin URI: http://flypaperagency.com/facebook-vinyl/
 Description: A plugin that will allow you to display a Facebook gallery in your WordPress.
 Author: Ryan Jackson
-Version: 1.0.2
+Version: 1.0.3
 Author URI: http://rjksn.me/
 */
 
@@ -355,11 +355,28 @@ class FB_Vinyl {
 		// Clear variables.
 		$output_gallery = $output_images = '';
 
-		if ( $album_details = $this->get_album_data( $id ) ) { 
-			$photo_details = $this->get_photo_data( $id, $limit ); 
+		$album_details = $this->get_album_data( $id );
+		
+		if ( $album_details ) { 
+
+			$photo_details = $this->get_photo_data( $id, $limit );
+
+			if ( ! $photo_details ) {
+				return isset( $this->error ) ? '<!-- fb vinyl error ' . $this->error . ' -->':'';
+			}
 		} else { 
 			return isset( $this->error ) ? '<!-- fb vinyl error ' . $this->error . ' -->':'';
 		}
+	
+		$album_name = isset( $album_details->name ) ? $this->clean( $album_details->name ) : 
+					isset( $album_details->from->name ) ? $this->clean( $album_details->from->name ) : '';
+
+
+		// if ( $album_details = $this->get_album_data( $id ) ) { 
+		// 	$photo_details = $this->get_photo_data( $id, $limit ); 
+		// } else { 
+		// 	return isset( $this->error ) ? '<!-- fb vinyl error ' . $this->error . ' -->':'';
+		// }
 		
 
 		// Process the data
@@ -399,12 +416,12 @@ class FB_Vinyl {
 		// var_dump( $album_details  );
 		$output_gallery = '<div class="fbg_wrapper' . ( !empty( $class ) ? ' ' . $class : '' ) . '">
 			<div class="fbg_description">' . 
-				( !empty( $title ) ? '<' . $title . '>' . $this->clean( $album_details->name )		. '</' . $title . '>' : '' ) .
+				( !empty( $title ) ? '<' . $title . '>' . $album_name . '</' . $title . '>' : '' ) .
 				( !empty( $desc  ) && isset( $album_details->description ) ? '<' . $desc  . '>' . $this->clean( $album_details->description ) . '</' . $desc  . '>' : '' ) . '
 			</div>
 			<div class="fbg_image_wrapper">' . $output_images . '</div> ' .
 
-				( !empty( $link ) ? '<a href="' . $album_details->link . '" title="Facebook: ' . $album_details->name .  '" class="fbg_fb_link" target="_blank">' . __('View on Facebook', 'fbvinyl' ) . '</a>': '' ) . '
+				( !empty( $link ) && isset( $album_details->link ) ? '<a href="' . $album_details->link . '" title="Facebook: ' . $album_name .  '" class="fbg_fb_link" target="_blank">' . __('View on Facebook', 'fbvinyl' ) . '</a>': '' ) . '
 			</div>';
 
 		if ( isset( $this->error ) ) 
@@ -419,23 +436,23 @@ class FB_Vinyl {
 	}
 
 	/**
-	 * Get the album details from Facebook. Uses load_data
+	 * Get the album details from Facebook through Flypaper's Server... Facebook changed this. Uses load_data
 	 *
 	 * @since 0.1
 	 */
 	private function get_album_data( $id ) { 
-		return $this->load_data( 'https://graph.facebook.com/' . esc_attr( $id ), 'a-' );
+		return $this->load_data( 'http://flypaperagency.com/graph/' . esc_attr( $id ), 'a-' );
 	}
 
-
 	/**
-	 * Get the photo data from facebook. Uses load data
+	 * Get the album details from Facebook through Flypaper's Server... Facebook changed this. Uses load data
 	 *
 	 * @since 0.1
 	 */
 	private function get_photo_data( $id, $limit = 25 ) { 
-		return $this->load_data( 'https://graph.facebook.com/' . esc_attr( $id ) . '/photos/?limit=' . (string)$limit, 'p-' );
+		return $this->load_data( 'http://flypaperagency.com/graph/' . esc_attr( $id ) . '/photos/?limit=' . (string)$limit, 'p-' );
 	}
+
 
 
 	/**

@@ -11,6 +11,8 @@ This plugin integrates Facebook albums into WordPress with an easy to use editor
 
 == Description ==
 
+** Facebook changed their rules, this plugin now goes THROUGH our server as a proxy, it's all I could think of to make it work again for you guys. **
+
 This plugin integrates Facebook albums into WordPress with an easy to use editor popup.
 
 Personally I like to make things easy. Especially things that are boring. So with that in mind I needed an easy way for clients to add their own galleries to WordPress, and I find the Media Library lacking. Since most companies have Facebook these days--and I work at a social media company--I decided to integrate Facebook albums into WordPress. And I wanted a really easy way for clients to be able to do this themselves. So I can continue to build things.
@@ -57,6 +59,11 @@ Yeah, I didn't like the other ones. Is this one perfect? No. But I've tried to k
 1. Look a editor window popup.
 
 == Changelog ==
+
+= 1.0.3 =
+* So, the plugin broke... 
+* Really the last update cleared your cache, and Facebook had changed their rules. 
+* I don't like this, but Facebook needs the auto codes, flypaperagency.com is now acting as a proxy to grab your details and pass them back. 
 
 = 1.0.2 =
 * Fixed the fact that the last update broke it for others. 
