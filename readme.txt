@@ -2,7 +2,7 @@
 Contributors: rjksn
 Tags: Facebook, gallery, graph, Facebook album, Facebook gallery, Facebook photos, Facebook images
 Requires at least: 3.3.2
-Tested up to: 3.4.2
+Tested up to: 3.5.1
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -10,6 +10,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 This plugin integrates Facebook albums into WordPress with an easy to use editor popup.
 
 == Description ==
+
+** Facebook changed their rules, this plugin now goes THROUGH our server as a proxy, it's all I could think of to make it work again for you guys. **
 
 This plugin integrates Facebook albums into WordPress with an easy to use editor popup.
 
@@ -57,6 +59,26 @@ Yeah, I didn't like the other ones. Is this one perfect? No. But I've tried to k
 1. Look a editor window popup.
 
 == Changelog ==
+
+= 1.0.3 =
+* So, the plugin broke... 
+* Really the last update cleared your cache, and Facebook had changed their rules. 
+* I don't like this, but Facebook needs the auto codes, flypaperagency.com is now acting as a proxy to grab your details and pass them back. 
+
+= 1.0.2 =
+* Fixed the fact that the last update broke it for others. 
+* Added some rudimentary troubleshooting details into the plugin. They will show up as comments. <!-- fb vinyl error url: [[URL]] response: [[JSON]] -->
+* Unsupported get requests in the error code above is FB's way of saying, you: A) don't have permission. B) that doesn't exist. 
+
+= 1.0.1 =
+* Fixed the name element for one user.
+
+= 1.0.0 =
+* Please don't let this break everything.
+* Added some options.
+* Migrated to WP_HTTP as opposed to cURL.
+* Placed some error checking on the basic requirements for the plugin to work.
+
 
 = 0.2.3 =
 * Fixed "rel" issue.
